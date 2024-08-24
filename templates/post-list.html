@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post List</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body class="min-h-screen bg-gray-300 flex flex-col">
+    <header class="bg-blue-600 p-4 text-white text-3xl flex justify-between items-center">
+        <h1>AI Blog Generator</h1>
+        <nav>
+            <a href="{% url "blog_generator:index" %}" class="text-xl hover:text-blue-100 mr-2">Home</a>
+        </nav>
+    </header>
+
+    <div class="flex-grow">
+        <main class="bg-white max-w-4xl mx-auto p-8 rounded-xl shadow-2xl mt-6">            
+            <h2 class="text-3xl font-bold mb-4">All Posts</h2>
+            
+            {% if posts %}
+                {% for post in posts %}
+                    <article class="border border-solid border-gray-500 p-4 rounded-md mb-4">
+                        <a href="{% url 'blog_generator:post_details' id=post.id %}">
+                            <h2 class="text-xl font-semibold">{{ post.youtube_title }}</h2>
+                            <p class="mt-3">{{ post.generated_content|truncatechars:100 }}</p>
+                        </a>
+                    </article>
+                {% endfor %}
+            {% else %}
+                <h3 class="text-xl">No Posts available</h3>
+            {% endif %}
+        </main>
+    </div>
+    
+    <footer class="bg-blue-600 w-full text-white px-4 py-2 grid place-content-center mt-6">
+        <p>Copyright &copy; 2024</p>
+        <p>All Rights Reserved</p>
+    </footer>
+</body>
+</html>

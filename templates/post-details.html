@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Details</title>
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+</head>
+<body class="min-h-screen bg-gray-300 flex flex-col">
+    <header class="bg-blue-600 p-4 text-white text-3xl flex justify-between items-center">
+        <h1>AI Blog Generator</h1>
+        <nav>
+            <a href="{% url "blog_generator:index" %}" class="text-xl hover:text-blue-100 mr-2">Home</a>
+            <a href="{% url "blog_generator:post_list" %}" class="text-xl hover:text-blue-100">Posts</a>
+        </nav>
+    </header>
+
+    <div class="flex-grow">
+        <main class="bg-white max-w-4xl mx-auto p-8 rounded-xl shadow-2xl mt-6">            
+            <h2 class="text-3xl font-bold mb-4">Post Details</h2>
+            
+            <article class="border border-solid border-gray-500 p-4 rounded-md mb-4">
+                <h2 class="text-2xl font-semibold">{{ post.youtube_title }}</h2>
+                <p class="mt-3">{{ post.generated_content }}</p>
+
+                <hr class="bg-gray-400 h-[1.5px] my-4">
+
+                <h2 class="text-2xl font-semibold">YouTube Title</h2>
+                <h3 class="text-xl mt-2 mb-4">{{ post.youtube_title }}</h3>
+
+                <h2 class="text-2xl font-semibold">YouTube Link</h2>
+                <a href="{{ post.youtube_link }}" target="_blank" class="block mt-2 text-blue-800 hover:underline">{{ post.youtube_link }}</a>
+            </article>
+        </main>
+    </div>
+    
+    <footer class="bg-blue-600 w-full text-white px-4 py-2 grid place-content-center mt-6">
+        <p>Copyright &copy; 2024</p>
+        <p>All Rights Reserved</p>
+    </footer>
+</body>
+</html>
