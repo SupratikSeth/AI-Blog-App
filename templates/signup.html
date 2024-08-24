@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body class="min-h-screen bg-gray-300 flex flex-col">
+    <header class="bg-blue-600 p-4 text-white text-3xl flex justify-between items-center">
+        <h1>AI Blog Generator</h1>
+        <nav>
+            <a href="{% url "blog_generator:user_login" %}" class="text-xl hover:text-blue-100 mr-2">Login</a>
+            <a href="{% url "blog_generator:user_signup" %}" class="text-xl hover:text-blue-100 mr-2">Signup</a>
+        </nav>
+    </header>
+
+    <div class="flex-grow">
+        <main class="bg-white max-w-2xl mx-auto p-8 rounded-xl shadow-2xl mt-6">
+            {% if errorMsg %}
+                <div class="text-center text-red-700 text-2xl">{{ errorMsg }}</div>
+            {% endif %}
+            
+            <h2 class="text-2xl font-bold mb-4">Signup</h2>
+            
+            <form action="" method="post" class="flex flex-col">
+                {% csrf_token %}
+                
+                <label for="username" class="font-semibold text-xl">Username</label>
+                <input type="text" name="username" id="username" placeholder="Enter your username..." class="block border border-solid border-gray-500 mt-2 text-xl p-2 w-full rounded">
+                <br>
+                <label for="email" class="font-semibold text-xl">Email</label>
+                <input type="email" name="email" id="email" placeholder="Enter your email..." class="block border border-solid border-gray-500 mt-2 text-xl p-2 w-full rounded">
+                <br>
+                <label for="password" class="font-semibold text-xl">Password</label>
+                <input type="password" name="password" id="password" placeholder="Enter your password..." class="block border border-solid border-gray-500 mt-2 text-xl p-2 w-full rounded">
+                <br>
+                <label for="cpwd" class="font-semibold text-xl">Confirm Password</label>
+                <input type="password" name="cpwd" id="cpwd" placeholder="Confirm your password..." class="block border border-solid border-gray-500 mt-2 text-xl p-2 w-full rounded">
+    
+                <button class="bg-blue-800 hover:bg-blue-700 mt-4 rounded py-2 text-white">Signup</button>
+            </form>
+        </main>
+    </div>
+    
+    <footer class="bg-blue-600 w-full text-white px-4 py-2 grid place-content-center mt-6">
+        <p>Copyright &copy; 2024</p>
+        <p>All Rights Reserved</p>
+    </footer>
+</body>
+</html>

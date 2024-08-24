@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Blog Generator</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static "js/main.js" %}" defer></script>
+</head>
+<body class="min-h-screen bg-gray-300 flex flex-col">
+    <header class="bg-blue-600 p-4 text-white text-3xl flex justify-between items-center">
+        <h1>AI Blog Generator</h1>
+        <nav>
+            <a href="#" class="text-xl">Welcome {{ user.username }}</a>
+            <a href="{% url "blog_generator:post_list" %}" class="text-xl hover:text-blue-100">Posts</a>
+            <a href="{% url "blog_generator:user_logout" %}" class="text-xl hover:text-blue-100">Logout</a>
+        </nav>
+    </header>
+
+    <div class="flex-grow">
+        <main class="bg-white max-w-4xl mx-auto p-4 rounded-xl shadow-2xl mt-12">
+            <h2 class="text-2xl font-bold text-center mb-4">Welcome to the AI Blog Generator</h2>
+            <p class="font-semibold text-center">Generate hign quality blog article from YouTube videos using artificial intelligence. Simply enter the link to the YouTube video below and let the AI create the content for you!</p>
+    
+            <section class="flex flex-col mt-4">
+                <label for="youtubeLink" class="text-2xl font-semibold">Enter Youtube Video Link</label>
+                <div class="mt-2 flex">
+                    <input type="url" name="youtubeLink" id="youtubeLink" placeholder="Paste YouTube Link..." class="border border-solid border-black p-2 flex-grow rounded-l">
+                    <button id="generateBtn" class="border border-solid border-black ml-4 px-4 rounded-r bg-blue-700 hover:bg-blue-600 text-white">Generate</button>
+                </div>
+            </section>
+    
+            <section class="mt-4">
+                <h1 class="text-2xl font-semibold">Generated Blog Article</h1>
+                <!-- Loader -->
+                <div id="loadingCircle" class="w-24 h-24 mx-auto border-8 border-solid  border-purple-800 rounded-full border-r-transparent animate-loader hidden"></div>
+                <div id="blogContent" class="mt-4">
+                    <!-- Blog article to be displayed -->                    
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer class="bg-blue-600 w-full text-white px-4 py-2 grid place-content-center mt-4">
+        <p>Copyright &copy; 2024</p>
+        <p>All Rights Reserved</p>
+    </footer>
+</body>
+</html>
