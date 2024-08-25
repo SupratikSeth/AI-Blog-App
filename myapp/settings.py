@@ -84,6 +84,13 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+DATABASES = {
+    'default': dj_database_url.config(
+        # Replace this value with your local database's connection string.
+        default='postgresql://posts_db_waz8_user:3RwMUuRoh6KV0FMwDB9VHAqECG3rwLeV@dpg-cr52hc52ng1s73ea1rr0-a.oregon-postgres.render.com/posts_db_waz8',
+        conn_max_age=600
+    )
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
